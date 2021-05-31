@@ -1,0 +1,30 @@
+<p><a href="/polls/videokart/">Videokart</a></p>
+{% if latest_videokart_list %}
+    <ul>
+    {% for videokart in latest_videokart_list %}
+        <li><a href="/polls/videokart/{{ videokart.id }}/">{{ videokart.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+<p><a href="/polls/gpu/">GPU</a></p>
+{% if latest_gpu_list %}
+    <ul>
+    {% for gpu in latest_gpu_list %}
+        <li><a href="/polls/gpu/{{ gpu.id }}/">{{ gpu.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+<p><a href="/polls/manufacturer/">Manufacturer</a></p>
+{% if latest_manufacturer_list %}
+    <ul>
+    {% for manufacturer in latest_manufacturer_list %}
+        <li><a href="/polls/manufacturer/{{ manufacturer.id }}/">{{ manufacturer.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

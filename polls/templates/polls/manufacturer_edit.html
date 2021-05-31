@@ -1,0 +1,9 @@
+<h1>{{ object.name }}</h1>
+
+<form action="{% url 'polls:manufacturer_edit' object.id %}" method="post">
+{% csrf_token %}
+    <input type="text" name="name" value="{{ object.name }}">
+    <input type="text" name="address" value="{{ object.address }}">
+    <input type="text" name="info" value="{{ object.info }}">
+<input type="submit" value="Submit">
+</form>

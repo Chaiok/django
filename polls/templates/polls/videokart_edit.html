@@ -1,0 +1,13 @@
+<h1>{{ object.name }}</h1>
+
+<form action="{% url 'polls:videokart_edit' object.id %}" method="post">
+{% csrf_token %}
+    <input type="text" name="name" value="{{ object.name }}">
+    <input type="number" name="price" value="{{ object.price }}">
+    <input type="number" name="kolvo" value="{{ object.kolvo }}">
+    <input type="date" name="year" value="{{ object.year }}">
+    <input type="text" name="info" value="{{ object.info }}">
+    <input type="text" name="idGPU" value="{{ object.idGPU }}">
+    <input type="text" name="manufacturerid" value="{{ object.manufacturerid }}">
+<input type="submit" value="Submit">
+</form>

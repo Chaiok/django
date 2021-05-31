@@ -1,0 +1,19 @@
+{% if latest_videokart_list %}
+    <ul>
+    {% for videokart in latest_videokart_list %}
+        <li><a href="/polls/videokart/{{ videokart.id }}/">{{ videokart }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<table border="1">
+    <tr>
+    {% for field in videokart_field %}
+        <td>{{field.name}}</td>
+    {% endfor %}
+    </tr>
+</table>
+
+<p><a href="/polls/">polls</a></p>

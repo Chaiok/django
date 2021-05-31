@@ -1,0 +1,19 @@
+{% if latest_manufacturer_list %}
+    <ul>
+    {% for manufacturer in latest_manufacturer_list %}
+        <li><a href="/polls/manufacturer/{{ manufacturer.id }}/">{{ manufacturer }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<table border="1">
+    <tr>
+    {% for field in manufacturer_field %}
+        <td>{{field.name}}</td>
+    {% endfor %}
+    </tr>
+</table>
+
+<p><a href="/polls/">polls</a></p>

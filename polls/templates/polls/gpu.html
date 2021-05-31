@@ -1,0 +1,19 @@
+{% if latest_gpu_list %}
+    <ul>
+    {% for gpu in latest_gpu_list %}
+        <li><a href="/polls/gpu/{{ gpu.id }}/">{{ gpu }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<table border="1">
+    <tr>
+    {% for field in gpu_field %}
+        <td>{{field.name}}</td>
+    {% endfor %}
+    </tr>
+</table>
+
+<p><a href="/polls/">polls</a></p>

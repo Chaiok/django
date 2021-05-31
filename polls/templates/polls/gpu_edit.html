@@ -1,0 +1,11 @@
+<h1>{{ object.name }}</h1>
+
+<form action="{% url 'polls:gpu_edit' object.id %}" method="post">
+{% csrf_token %}
+    <input type="text" name="name" value="{{ object.name }}">
+    <input type="text" name="kernel_NVIDIA_CUDA" value="{{ object.kernel_NVIDIA_CUDA }}">
+    <input type="text" name="clock_frequency_with_acceleration_GHz" value="{{ object.clock_frequency_with_acceleration_GHz }}">
+    <input type="text" name="video_memory_size" value="{{ object.video_memory_size }}">
+    <input type="text" name="memory_type" value="{{ object.memory_type }}">
+<input type="submit" value="Submit">
+</form>
