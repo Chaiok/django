@@ -1,9 +1,5 @@
 <form action="{% url 'polls:gpu_add' %}" method="post">
     {% csrf_token %}
-    <input type="text" name="name" value="">
-    <input type="text" name="kernel_NVIDIA_CUDA" value="">
-    <input type="text" name="clock_frequency_with_acceleration_GHz" value="">
-    <input type="text" name="video_memory_size" value="">
-    <input type="text" name="memory_type" value="">
+    {{ form }}
     <input type="submit" value="Submit">
-    </form>
+</form>

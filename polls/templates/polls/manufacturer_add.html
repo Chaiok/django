@@ -1,7 +1,5 @@
 <form action="{% url 'polls:manufacturer_add' %}" method="post">
-{% csrf_token %}
-    <input type="text" name="name" value="">
-    <input type="text" name="address" value="">
-    <input type="text" name="info" value="">
+    {% csrf_token %}
+    {{ form }}
     <input type="submit" value="Submit">
 </form>

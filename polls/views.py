@@ -5,6 +5,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
 from django.template import loader
 from .models import Manufacturer,GPU,Videokart
+from .forms import ManufacturerForm,VideokartForm,GPUForm
 
 def index(request):
     latest_videokart_list = Videokart.objects.order_by('-id')[:5]
@@ -92,8 +93,10 @@ def manufacturer_detail(request, question_id):
 
 def gpu_add(request):
     if request.method == 'GET':
+        form = GPUForm()
         template = loader.get_template('polls/gpu_add.html')
         context = {
+            'form':form
         }
         return HttpResponse(template.render(context, request))
     elif request.method == 'POST':
@@ -129,8 +132,10 @@ def gpu_edit(request, question_id):
 
 def manufacturer_add(request):
     if request.method == 'GET':
+        form = ManufacturerForm()
         template = loader.get_template('polls/manufacturer_add.html')
         context = {
+            'form':form
         }
         return HttpResponse(template.render(context, request))
     elif request.method == 'POST':
@@ -164,19 +169,29 @@ def manufacturer_edit(request, question_id):
 
 def videokart_add(request):
     if request.method == 'GET':
+        form = VideokartForm()
         template = loader.get_template('polls/videokart_add.html')
         context = {
+            'form':form
         }
         return HttpResponse(template.render(context, request))
     elif request.method == 'POST':
         try:
-            gpu=GPU.objects.get(id=int(request.POST['idGPU']))
-            manufacturer=Manufacturer.objects.get(id=int(request.POST['manufacturerid']))
-            videokart=Videokart(name=request.POST['name'],price=int(request.POST['price']),kolvo=int(request.POST['kolvo']),year=request.POST['year'],info=request.POST['info'],idGPU=gpu,manufacturerid=manufacturer)
-            videokart.save()
+            #gpu=GPU.objects.get(id=int(request.POST['idGPU']))
+            #manufacturer=Manufacturer.objects.get(id=int(request.POST['manufacturerid']))
+            #videokart=Videokart(name=request.POST['name'],price=int(request.POST['price']),kolvo=int(request.POST['kolvo']),year=request.POST['year'],info=request.POST['info'],idGPU=gpu,manufacturerid=manufacturer)
+            #videokart.save()
+
+            form = VideokartForm(request.POST)
+            if form.is_valid():
+                form.save()
+                url = reverse('polls:videokart')
+                return HttpResponseRedirect(url)
         except:
             print("An exception occurred: videokart")
-        url = reverse('polls:videokart_detail', kwargs={'question_id': videokart.id})
+        #url = reverse('polls:videokart_detail', kwargs={'question_id': videokart.id})
+        #return HttpResponseRedirect(url)
+        url = reverse('polls:videokart')
         return HttpResponseRedirect(url)
 
 def videokart_edit(request, question_id):

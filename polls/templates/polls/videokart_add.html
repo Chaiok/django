@@ -1,11 +1,5 @@
 <form action="{% url 'polls:videokart_add' %}" method="post">
     {% csrf_token %}
-    <input type="text" name="name" value="">
-    <input type="number" name="price" value="">
-    <input type="number" name="kolvo" value="">
-    <input type="date" name="year" value="">
-    <input type="text" name="info" value="">
-    <input type="text" name="idGPU" value="">
-    <input type="text" name="manufacturerid" value="">
+    {{ form }}
     <input type="submit" value="Submit">
-    </form>
+</form>
